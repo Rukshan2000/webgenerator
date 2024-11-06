@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 15px;
+      background-color: #333;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .instructions {
+      margin-top: 20px;
+      background-color: #f0f8ff;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      display: none; /* Hidden initially */
+    }
+    .instructions h2 {
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Generate Your Interactive Page</h1>
+
+<form id="generatorForm">
+  <label for="username">Name:</label>
+  <input type="text" id="username" required>
+
+  <label for="whatsapp">WhatsApp Number:</label>
+  <input type="text" id="whatsapp" required>
+
+  <label for="youtube">YouTube Link:</label>
+  <input type="text" id="youtube">
+
+  <label for="facebook">Facebook Link:</label>
+  <input type="text" id="facebook">
+
+  <label for="instagram">Instagram Link:</label>
+  <input type="text" id="instagram">
+
+  <label for="qrLink">QR Code Link:</label>
+  <input type="text" id="qrLink">
+
+  <label for="bgGradient">Select Background Gradient:</label>
+  <select id="bgGradient" required>
+    <option value="linear-gradient(135deg, #1f4037, #99f2c8)">Green to Light Green</option>
+    <option value="linear-gradient(135deg, #ff7e5f, #feb47b)">Pink to Orange</option>
+    <option value="linear-gradient(135deg, #4e54c8, #8f94fb)">Purple to Blue</option>
+    <option value="linear-gradient(135deg, #ffafbd, #ffc3a0)">Pink to Peach</option>
+    <option value="linear-gradient(135deg, #232526, #414345)">Dark Grey to Steel Grey</option>
+    <option value="linear-gradient(135deg, #0f2027, #203a43, #2c5364)">Dark Blue to Slate Blue</option>
+    <option value="linear-gradient(135deg, #3a1c71, #d76d77, #ffaf7b)">Dark Purple to Peach</option>
+    <option value="linear-gradient(135deg, #000428, #004e92)">Dark Navy to Blue</option>
+    <option value="linear-gradient(135deg, #373b44, #4286f4)">Charcoal to Light Blue</option>
+  </select>
+  
+
+  <label for="btnGradient">Select Button Gradient:</label>
+  <select id="btnGradient" required>
+    <option value="linear-gradient(135deg, #4e54c8, #8f94fb)">Purple to Blue</option>
+    <option value="linear-gradient(135deg, #f7971e, #ffd200)">Orange to Yellow</option>
+    <option value="linear-gradient(135deg, #ff0844, #ffb199)">Red to Pink</option>
+    <option value="linear-gradient(135deg, #1f4037, #99f2c8)">Green to Light Green</option>
+    <option value="linear-gradient(135deg, #232526, #414345)">Dark Grey to Steel Grey</option>
+    <option value="linear-gradient(135deg, #141e30, #243b55)">Dark Blue to Black</option>
+    <option value="linear-gradient(135deg, #485563, #29323c)">Deep Grey to Dark Slate</option>
+    <option value="linear-gradient(135deg, #434343, #000000)">Black to Darker Black</option>
+    <option value="linear-gradient(135deg, #0b486b, #f56217)">Deep Blue to Orange</option>
+  </select>
+  
+
+  <button type="button" onclick="generateHTML()">Generate Website</button>
+</form>
+
+<div class="instructions" id="instructions">
+  <h2>How to Deploy Your Website on Netlify:</h2>
+  <ol>
+    <li><strong>Download the HTML file:</strong> Click the "Generate Website" button, and the HTML file will be downloaded to your computer.</li>
+    <li><strong>Create a New Site on Netlify:</strong> Visit <a href="https://www.netlify.com/" target="_blank">Netlify</a> and sign in or sign up.</li>
+    <li><strong>Drag-and-Drop Deployment:</strong> On your Netlify dashboard, drag and drop the folder containing the downloaded HTML file into the "Drop folder to deploy" area.</li>
+    <li><strong>Access Your Site:</strong> After deployment, you’ll receive a URL to access your site.</li>
+    <li><strong>Optional - Customize Your URL:</strong> In the Netlify dashboard, you can set a custom domain under "Domain settings".</li>
+  </ol>
+  <p>Your site is now live! Enjoy your new website.</p>
+</div>
+
+<script>
+  function generateHTML() {
+    const username = document.getElementById('username').value;
+    const whatsapp = document.getElementById('whatsapp').value;
+    const youtube = document.getElementById('youtube').value;
+    const facebook = document.getElementById('facebook').value;
+    const instagram = document.getElementById('instagram').value;
+    const qrLink = document.getElementById('qrLink').value;
+    const bgGradient = document.getElementById('bgGradient').value;
+    const btnGradient = document.getElementById('btnGradient').value;
+
+    const htmlContent = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${username} - web page</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      overflow: hidden;
+    }
+    body {
+      background: ${bgGradient};
+      background-size: 400% 400%;
+      animation: gradientAnimation 12s ease infinite;
+      text-align: center;
+    }
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .shadow-box {
+      position: absolute;
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 0, 0, 0.6), transparent);
+      animation: shadowPulse 3s ease-in-out infinite;
+    }
+    @keyframes shadowPulse {
+      0%, 100% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.2); opacity: 1; }
+    }
+    .container {
+      position: relative;
+      animation: fadeIn 1.5s ease-in-out forwards;
+      opacity: 0;
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+    h1 {
+      font-size: 2.2em;
+      margin-bottom: 30px;
+      letter-spacing: 1.5px;
+      animation: fadeSlideDown 1s ease forwards;
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    @keyframes fadeSlideDown {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .button-group .btn {
+      display: block;
+      width: 220px;
+      margin: 15px auto;
+      padding: 15px;
+      font-size: 1.2em;
+      color: #fff;
+      background: ${btnGradient};
+      border: none;
+      border-radius: 50px;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .button-group .btn:hover {
+      background: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="shadow-box"></div>
+  <div class="container">
+    <h1>Welcome to ${username}'s Personal Page</h1>
+    <div class="button-group">
+      <a href="https://wa.me/${whatsapp}" class="btn">Chat on WhatsApp</a>
+      <a href="${youtube}" class="btn">Visit YouTube</a>
+      <a href="${facebook}" class="btn">Like on Facebook</a>
+      <a href="${instagram}" class="btn">Follow on Instagram</a>
+      <a href="${qrLink}" class="btn">Scan My QR</a>
+    </div>
+  </div>
+</body>
+</html>`;
+
+    // Create and download HTML file
+    const blob = new Blob([htmlContent], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `${username}_website.html`;
+    link.click();
+
+    // Display instructions
+    document.getElementById('instructions').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
